@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Single Page App routing for GitHub Pages
+    // This script handles client-side routing when a user refreshes the page or loads a deep link
+    const segment = 1; // Adjust this if your repo is not at the root level
+    
+    const l = window.location;
+    const repoName = l.pathname.split('/')[segment];
+    const hasRepoName = repoName !== '';
+    
+    if (hasRepoName) {
+      // Get the rest of the path after the repo name
+      const pathSegments = l.pathname.split('/').slice(segment + 1);
+      const path = pathSegments.length > 0 ? pathSegments.join('/') : '';
+      
+      // Redirect to the correct URL
+      window.location.replace(`${l.origin}/${repoName}/?path=${path}${l.search}`);
+    } else {
+      // Handle root repo cases
+      window.location.replace(`${l.origin}/?path=${l.pathname.slice(1)}${l.search}`);
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
