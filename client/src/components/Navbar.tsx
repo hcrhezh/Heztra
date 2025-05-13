@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import DarkModeToggle from "./DarkModeToggle";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,22 +35,19 @@ export default function Navbar() {
   };
   
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || !isHomePage ? 'bg-white/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || !isHomePage ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-heading font-bold text-primary">
-            Polifilo<span className="text-secondary">.</span>
+            Polifilo<span className="text-secondary dark:text-white">.</span>
           </Link>
           
-          <div className="hidden md:flex space-x-8">
-            <NavLink href="/#home" scrolled={scrolled} isHomePage={isHomePage} onClick={closeMobileMenu}>
-              Home
+          <div className="hidden md:flex space-x-8 items-center">
+            <NavLink href="/#app-store" scrolled={scrolled} isHomePage={isHomePage} onClick={closeMobileMenu}>
+              App Store
             </NavLink>
             <NavLink href="/#portfolio" scrolled={scrolled} isHomePage={isHomePage} onClick={closeMobileMenu}>
               Portfolio
-            </NavLink>
-            <NavLink href="/#app-store" scrolled={scrolled} isHomePage={isHomePage} onClick={closeMobileMenu}>
-              App Store
             </NavLink>
             <NavLink href="/#about" scrolled={scrolled} isHomePage={isHomePage} onClick={closeMobileMenu}>
               About
@@ -57,29 +55,32 @@ export default function Navbar() {
             <NavLink href="/#contact" scrolled={scrolled} isHomePage={isHomePage} onClick={closeMobileMenu}>
               Contact
             </NavLink>
+            <DarkModeToggle />
           </div>
           
-          <button 
-            onClick={toggleMobileMenu}
-            className="md:hidden focus:outline-none"
-            aria-label="Toggle mobile menu"
-          >
-            {mobileMenuOpen ? (
-              <X className={`h-6 w-6 ${scrolled || !isHomePage ? 'text-gray-800' : 'text-white'}`} />
-            ) : (
-              <Menu className={`h-6 w-6 ${scrolled || !isHomePage ? 'text-gray-800' : 'text-white'}`} />
-            )}
-          </button>
+          <div className="flex items-center md:hidden">
+            <DarkModeToggle />
+            <button 
+              onClick={toggleMobileMenu}
+              className="focus:outline-none ml-2"
+              aria-label="Toggle mobile menu"
+            >
+              {mobileMenuOpen ? (
+                <X className={`h-6 w-6 ${scrolled || !isHomePage ? 'text-gray-800 dark:text-white' : 'text-white'}`} />
+              ) : (
+                <Menu className={`h-6 w-6 ${scrolled || !isHomePage ? 'text-gray-800 dark:text-white' : 'text-white'}`} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-md py-4 animate-fade-in">
+        <div className="md:hidden bg-white dark:bg-gray-900 shadow-md py-4 animate-fade-in">
           <div className="container mx-auto px-4 flex flex-col space-y-3">
-            <MobileNavLink href="/#home" onClick={closeMobileMenu}>Home</MobileNavLink>
-            <MobileNavLink href="/#portfolio" onClick={closeMobileMenu}>Portfolio</MobileNavLink>
             <MobileNavLink href="/#app-store" onClick={closeMobileMenu}>App Store</MobileNavLink>
+            <MobileNavLink href="/#portfolio" onClick={closeMobileMenu}>Portfolio</MobileNavLink>
             <MobileNavLink href="/#about" onClick={closeMobileMenu}>About</MobileNavLink>
             <MobileNavLink href="/#contact" onClick={closeMobileMenu}>Contact</MobileNavLink>
           </div>

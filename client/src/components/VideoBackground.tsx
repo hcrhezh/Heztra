@@ -30,7 +30,11 @@ export default function VideoBackground() {
             videoRef.current.style.display = 'none';
             const parent = videoRef.current.parentElement;
             if (parent) {
-              parent.style.backgroundImage = 'linear-gradient(to right, #4a00e0, #8e2de2)';
+              // Check if dark mode is enabled
+              const isDarkMode = document.documentElement.classList.contains('dark');
+              parent.style.backgroundImage = isDarkMode 
+                ? 'linear-gradient(to right, #1a1a2e, #16213e)' 
+                : 'linear-gradient(to right, #4a00e0, #8e2de2)';
             }
           }
         });
