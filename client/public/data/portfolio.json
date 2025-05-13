@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "E-Commerce Platform Redesign",
+    "description": "Complete redesign and development of a modern e-commerce platform with enhanced user experience.",
+    "category": "Web Development",
+    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&h=900",
+    "technologies": ["React", "Node.js"],
+    "projectUrl": "#"
+  },
+  {
+    "id": 2,
+    "title": "Health & Fitness Tracker",
+    "description": "A comprehensive health and fitness mobile application with personalized workout plans.",
+    "category": "Mobile App",
+    "imageUrl": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&h=900",
+    "technologies": ["Swift", "Flutter"],
+    "projectUrl": "#"
+  },
+  {
+    "id": 3,
+    "title": "Analytics Dashboard",
+    "description": "Interactive data visualization dashboard designed for enterprise-level data analysis.",
+    "category": "UI/UX Design",
+    "imageUrl": "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&h=900",
+    "technologies": ["Figma", "D3.js"],
+    "projectUrl": "#"
+  },
+  {
+    "id": 4,
+    "title": "Corporate Brand Identity",
+    "description": "Complete brand identity design including logo, style guide, and marketing materials.",
+    "category": "Branding",
+    "imageUrl": "https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1400&h=900",
+    "technologies": ["Illustrator", "Photoshop"],
+    "projectUrl": "#"
+  }
+]

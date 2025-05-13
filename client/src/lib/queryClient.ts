@@ -16,12 +16,33 @@ export async function apiRequest(
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
   });
 
   await throwIfResNotOk(res);
   return res;
 }
+
+// For GitHub Pages static hosting, map API paths to JSON files
+const getStaticDataPath = (apiPath: string): string => {
+  const pathMapping: Record<string, string> = {
+    '/api/portfolio': '/data/portfolio.json',
+    '/api/apps': '/data/apps.json',
+  };
+  
+  // Check if it's a detail view (like /api/apps/1)
+  const appDetailMatch = apiPath.match(/^\/api\/apps\/(\d+)$/);
+  const portfolioDetailMatch = apiPath.match(/^\/api\/portfolio\/(\d+)$/);
+  
+  if (appDetailMatch) {
+    return `/data/apps.json#${appDetailMatch[1]}`;
+  }
+  
+  if (portfolioDetailMatch) {
+    return `/data/portfolio.json#${portfolioDetailMatch[1]}`;
+  }
+  
+  return pathMapping[apiPath] || apiPath;
+};
 
 type UnauthorizedBehavior = "returnNull" | "throw";
 export const getQueryFn: <T>(options: {
@@ -29,10 +50,25 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey[0] as string, {
-      credentials: "include",
-    });
-
+    const apiPath = queryKey[0] as string;
+    const staticPath = getStaticDataPath(apiPath);
+    
+    // Handle ID-specific requests (detail views)
+    if (staticPath.includes('#')) {
+      const [filePath, itemId] = staticPath.split('#');
+      const res = await fetch(filePath);
+      await throwIfResNotOk(res);
+      const items = await res.json();
+      const item = items.find((i: any) => i.id === parseInt(itemId));
+      if (!item) {
+        throw new Error(`Item with ID ${itemId} not found`);
+      }
+      return item;
+    }
+    
+    // Handle regular list requests
+    const res = await fetch(staticPath);
+    
     if (unauthorizedBehavior === "returnNull" && res.status === 401) {
       return null;
     }
