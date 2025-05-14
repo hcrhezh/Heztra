@@ -42,11 +42,13 @@ function AppCardCompact({ app, index }: AppCardProps) {
           <div className="text-xs text-gray-400">★</div>
         </div>
       </div>
-      <button 
-        className="px-4 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-500 dark:bg-blue-900 dark:text-blue-300"
+      <a 
+        href={app.id % 2 === 0 ? "/apk/sample-app.apk" : "/apk/game-sample.apk"} 
+        download
+        className="px-4 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-500 dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors cursor-pointer"
       >
         {app.isPaid ? "Buy" : "Install"}
-      </button>
+      </a>
     </motion.div>
   );
 }
@@ -203,15 +205,17 @@ function AppCardRow({ app, index }: AppCardProps) {
               <div className="text-xs text-gray-500 dark:text-gray-400 ml-2">{app.size || "14 MB"}</div>
             </div>
           </div>
-          <button 
-            className={`px-4 py-1 rounded-full text-sm font-medium ${
+          <a 
+            href={app.id % 2 === 0 ? "/apk/sample-app.apk" : "/apk/game-sample.apk"} 
+            download
+            className={`px-4 py-1 rounded-full text-sm font-medium cursor-pointer ${
               app.isPaid 
                 ? 'bg-blue-100 hover:bg-blue-200 dark:bg-blue-900 dark:hover:bg-blue-800 text-blue-600 dark:text-blue-300' 
                 : 'bg-blue-100 hover:bg-blue-200 dark:bg-blue-900 dark:hover:bg-blue-800 text-blue-600 dark:text-blue-300'
             }`}
           >
             {app.isPaid ? `${app.price}` : "Install"}
-          </button>
+          </a>
         </div>
         
         <div className="mt-3">
@@ -276,9 +280,13 @@ function AppCardRow({ app, index }: AppCardProps) {
                     </div>
                   </div>
                   
-                  <div className="bg-blue-500 text-white rounded-full py-2 text-center mb-4">
+                  <a 
+                    href={app.id % 2 === 0 ? "/apk/sample-app.apk" : "/apk/game-sample.apk"} 
+                    download
+                    className="bg-blue-500 text-white rounded-full py-2 text-center mb-4 block hover:bg-blue-600 transition-colors"
+                  >
                     {app.isPaid ? `Buy ${app.price}` : "Install"}
-                  </div>
+                  </a>
                   
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{app.description}</p>
                   

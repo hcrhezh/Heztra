@@ -1,0 +1,15 @@
+
+{
+  "filename": "sample-app.apk",
+  "size": "4.2 MB",
+  "version": "1.0.0",
+  "versionCode": 1,
+  "minSdk": 21,
+  "contentType": "application/vnd.android.package-archive",
+  "packageName": "com.polifilo.sampleapp",
+  "signature": "SHA1: 01:23:45:67:89:AB:CD:EF:...",
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE"
+  ]
+}

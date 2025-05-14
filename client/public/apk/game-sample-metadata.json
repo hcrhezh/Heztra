@@ -1,0 +1,16 @@
+
+{
+  "filename": "game-sample.apk",
+  "size": "8.7 MB",
+  "version": "2.1.0",
+  "versionCode": 21,
+  "minSdk": 23,
+  "contentType": "application/vnd.android.package-archive",
+  "packageName": "com.polifilo.gamesample",
+  "signature": "SHA1: 98:76:54:32:10:BA:DC:FE:...",
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.VIBRATE"
+  ]
+}
