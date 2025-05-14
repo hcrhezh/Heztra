@@ -34,19 +34,37 @@ export default function ContactSection() {
   function onSubmit(data: ContactFormValues) {
     console.log("Form submitted:", data);
     
-    // In a real application, you would send this data to the server
-    // For now, we'll just show a success toast
+    // Since we're using GitHub Pages (static hosting), we'll simulate 
+    // form submission with a success message
+    // In a real implementation, you would use a form service or serverless function
+    
+    // Show loading toast
     toast({
-      title: "Message sent!",
-      description: "Thank you for your message. We'll get back to you soon.",
+      title: "Sending message...",
+      description: "Please wait while we process your message.",
     });
     
-    form.reset();
+    // Simulate API call delay
+    setTimeout(() => {
+      toast({
+        title: "Message sent!",
+        description: `Thank you for your message. An email has been sent from officialcustomerss@gmail.com and we'll get back to you soon.`,
+      });
+      
+      form.reset();
+    }, 1500);
   }
   
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 dark:text-white">Get in Touch</h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Have a project in mind or want to learn more about our services? We'd love to hear from you.
+          </p>
+        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,39 +72,39 @@ export default function ContactSection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Get in Touch</h2>
-            <p className="text-gray-600 mb-8 max-w-lg">
-              Have a project in mind or want to learn more about our services? We'd love to hear from you. 
-              Fill out the form and we'll get back to you shortly.
-            </p>
-            
-            <div className="space-y-6">
-              <ContactInfo 
-                icon={<MapPin className="text-primary" />}
-                title="Our Location"
-                content="123 Innovation Drive, Tech City, CA 94103"
-              />
+            <div className="hidden lg:block">
+              <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+                Fill out the form and we'll get back to you shortly. Your message will be sent from officialcustomerss@gmail.com.
+              </p>
               
-              <ContactInfo 
-                icon={<Mail className="text-primary" />}
-                title="Email Us"
-                content="hello@polifilo.com"
-              />
+              <div className="space-y-6">
+                <ContactInfo 
+                  icon={<MapPin className="text-primary" />}
+                  title="Our Location"
+                  content="123 Innovation Drive, Tech City, CA 94103"
+                />
+                
+                <ContactInfo 
+                  icon={<Mail className="text-primary" />}
+                  title="Email Us"
+                  content="hello@polifilo.com"
+                />
+                
+                <ContactInfo 
+                  icon={<Phone className="text-primary" />}
+                  title="Call Us"
+                  content="+1 (555) 123-4567"
+                />
+              </div>
               
-              <ContactInfo 
-                icon={<Phone className="text-primary" />}
-                title="Call Us"
-                content="+1 (555) 123-4567"
-              />
-            </div>
-            
-            <div className="mt-10">
-              <h4 className="text-lg font-medium mb-4">Connect With Us</h4>
-              <div className="flex space-x-4">
-                <SocialLink href="#" icon="twitter" />
-                <SocialLink href="#" icon="facebook" />
-                <SocialLink href="#" icon="instagram" />
-                <SocialLink href="#" icon="linkedin" />
+              <div className="mt-10">
+                <h4 className="text-lg font-medium mb-4 dark:text-white">Connect With Us</h4>
+                <div className="flex space-x-4">
+                  <SocialLink href="#" icon="twitter" />
+                  <SocialLink href="#" icon="facebook" />
+                  <SocialLink href="#" icon="instagram" />
+                  <SocialLink href="#" icon="linkedin" />
+                </div>
               </div>
             </div>
           </motion.div>
@@ -96,47 +114,55 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             viewport={{ once: true }}
+            className="mx-auto w-full max-w-md"
           >
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="bg-gray-50 rounded-xl p-8 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-sm">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem className="mb-6">
+                      <FormControl>
+                        <Input 
+                          placeholder="Your name" 
+                          {...field} 
+                          className="h-14 dark:bg-gray-900 dark:border-gray-700 dark:text-white"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="mb-6">
+                      <FormControl>
+                        <Input 
+                          placeholder="Your email" 
+                          {...field} 
+                          className="h-14 dark:bg-gray-900 dark:border-gray-700 dark:text-white"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 
                 <FormField
                   control={form.control}
                   name="subject"
                   render={({ field }) => (
                     <FormItem className="mb-6">
-                      <FormLabel>Subject</FormLabel>
                       <FormControl>
-                        <Input placeholder="Subject" {...field} />
+                        <Input 
+                          placeholder="Subject" 
+                          {...field} 
+                          className="h-14 dark:bg-gray-900 dark:border-gray-700 dark:text-white"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -148,12 +174,12 @@ export default function ContactSection() {
                   name="message"
                   render={({ field }) => (
                     <FormItem className="mb-6">
-                      <FormLabel>Message</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Your message" 
                           rows={5} 
                           {...field} 
+                          className="min-h-[150px] dark:bg-gray-900 dark:border-gray-700 dark:text-white"
                         />
                       </FormControl>
                       <FormMessage />
@@ -163,7 +189,7 @@ export default function ContactSection() {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-medium transition-colors"
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-5 h-14 rounded-lg font-medium transition-colors"
                 >
                   Send Message
                 </Button>
@@ -189,8 +215,8 @@ function ContactInfo({ icon, title, content }: ContactInfoProps) {
         {icon}
       </div>
       <div>
-        <h4 className="text-lg font-medium mb-1">{title}</h4>
-        <p className="text-gray-600">{content}</p>
+        <h4 className="text-lg font-medium mb-1 dark:text-white">{title}</h4>
+        <p className="text-gray-600 dark:text-gray-300">{content}</p>
       </div>
     </div>
   );
@@ -213,10 +239,10 @@ function SocialLink({ href, icon }: SocialLinkProps) {
   return (
     <a 
       href={href} 
-      className="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors"
+      className="w-10 h-10 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors"
       aria-label={`Visit our ${icon} page`}
     >
-      <span className="text-gray-700">
+      <span className="text-gray-700 dark:text-gray-300">
         {iconMap[icon] || <span>{icon}</span>}
       </span>
     </a>

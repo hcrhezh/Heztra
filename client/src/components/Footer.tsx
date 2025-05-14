@@ -35,8 +35,8 @@ export default function Footer() {
             <h4 className="text-lg font-medium mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <FooterLink href="/#home">Home</FooterLink>
-              <FooterLink href="/#portfolio">Portfolio</FooterLink>
               <FooterLink href="/#app-store">App Store</FooterLink>
+              <FooterLink href="/#portfolio">Portfolio</FooterLink>
               <FooterLink href="/#about">About Us</FooterLink>
               <FooterLink href="/#contact">Contact</FooterLink>
             </ul>
@@ -53,7 +53,7 @@ export default function Footer() {
               />
               <button 
                 type="submit" 
-                className="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-colors"
+                className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-lg transition-colors"
                 aria-label="Subscribe to newsletter"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
