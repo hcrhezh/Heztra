@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-heading font-bold mb-4">
-              Polifilo<span className="text-primary">.</span>
+              Heztra Store<span className="text-primary">.</span>
             </h3>
             <p className="text-gray-400 mb-6">Creating innovative digital solutions for the modern world.</p>
             <div className="flex space-x-4">
@@ -68,7 +68,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} Polifilo. All rights reserved.
+              &copy; {currentYear} Heztra Store. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">

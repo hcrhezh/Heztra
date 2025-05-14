@@ -39,7 +39,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-heading font-bold text-primary">
-            Polifilo<span className="text-secondary dark:text-white">.</span>
+            Heztra Store<span className="text-secondary dark:text-white">.</span>
           </Link>
           
           <div className="hidden md:flex space-x-8 items-center">

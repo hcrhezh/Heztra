@@ -21,7 +21,7 @@ export default function Home() {
 
   // Update the document title
   useEffect(() => {
-    document.title = "Polifilo - Portfolio & App Store";
+    document.title = "Heztra Store - Portfolio & App Store";
   }, []);
 
   return (
