@@ -62,7 +62,21 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <AppStoreSection apps={appsData || [] as any[]} />
+        <>
+          <AppStoreSection apps={appsData || [] as any[]} />
+          <div className="container mx-auto px-4 py-10 text-center bg-white dark:bg-gray-900">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 dark:text-white">Visit Our Full Play Store</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">Check out our pure HTML/CSS/JS implementation of the Google Play Store with 50 featured apps</p>
+            <a 
+              href="/playstore.html" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-medium transition-colors"
+            >
+              Launch Play Store
+            </a>
+          </div>
+        </>
       )}
       
       {portfolioLoading ? (
